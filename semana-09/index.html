@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Semana 9: monolitos, microservicios, API, endpoints, capas, Angular, JWT, sesiones y protocolos.">
+  <meta property="og:title" content="Semana 9 - Arquitectura, JWT y protocolos">
+  <meta property="og:description" content="Guía introductoria y examen de 30 casos con respuestas explicadas.">
+  <meta property="og:type" content="website">
+  <title>Semana 9 | Arquitectura, JWT y protocolos</title>
+  <style>
+    :root{color-scheme:dark;--bg:#07121d;--panel:#10273a;--panel2:#15344b;--text:#f4f8fb;--muted:#b8c9d6;--accent:#ffb45e;--accent2:#62dbc9;--blue:#79aaff;--ok:#63e6a8;--bad:#ff93a0;--border:#31516a}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 92% 0,#51371e 0,transparent 34%),var(--bg);color:var(--text);line-height:1.55}a{color:var(--accent2)}header,main{width:min(1050px,calc(100% - 28px));margin:auto}header{padding:38px 0 24px}.back{text-decoration:none;font-weight:750}.kicker{display:block;margin-top:35px;color:var(--accent);font-weight:850;letter-spacing:.1em;text-transform:uppercase}h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.08;margin:.35rem 0 .8rem}.lead{font-size:1.08rem;color:var(--muted);max-width:830px}.info{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.pill{background:#2d3545;border:1px solid var(--border);padding:7px 12px;border-radius:999px;color:#e9eef4;font-size:.9rem}.notice{background:#342d27;border-left:4px solid var(--accent);padding:16px 18px;border-radius:10px;margin:16px 0 30px;color:#fff0df}
+    .concepts{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;margin:0 0 25px}.concept{background:#102b40;border:1px solid var(--border);border-radius:16px;padding:19px}.concept h2{font-size:1.08rem;margin:0 0 8px;color:var(--accent2)}.concept p{color:var(--muted);margin:0}.section-title{margin:36px 0 14px}.table-wrap{overflow-x:auto;border-radius:14px}.comparison{width:100%;min-width:650px;border-collapse:collapse;background:#0e2436;border:1px solid var(--border)}.comparison th,.comparison td{padding:12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}.comparison th{color:var(--accent2);background:#183149}.small{color:var(--muted);font-size:.92rem}
+    .jwt{background:#0b1d2c;border:1px solid var(--border);border-radius:16px;padding:20px;margin-bottom:18px}.jwt-parts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:15px 0}.jwt-part{border-radius:12px;padding:14px;background:#182d43}.jwt-part:nth-child(1){border-top:4px solid #ff7b72}.jwt-part:nth-child(2){border-top:4px solid #bd93f9}.jwt-part:nth-child(3){border-top:4px solid #62dbc9}.jwt-part strong{display:block;margin-bottom:5px}.code{background:#050c13;border:1px solid #38556e;border-radius:13px;padding:16px;overflow:auto}.code pre{margin:0;white-space:pre-wrap;color:#d8f5ec;font-size:.86rem}.protocols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:34px}.protocol{background:#172d42;border:1px solid var(--border);border-radius:13px;padding:15px}.protocol strong{color:var(--accent2);font-size:1.12rem}
+    .question{background:linear-gradient(150deg,var(--panel2),var(--panel));border:1px solid var(--border);border-radius:18px;padding:24px;margin:18px 0}.question h2{font-size:1.08rem;margin:0 0 18px}.number{color:var(--accent);font-weight:850}.option{display:flex;gap:12px;align-items:flex-start;border:1px solid #3b5a72;border-radius:12px;padding:12px 14px;margin:9px 0;cursor:pointer}.option:hover,.option:focus-within{background:#1c3d55;border-color:var(--blue)}input[type=radio]{margin-top:5px;accent-color:var(--accent);transform:scale(1.15)}.explanation{display:none;margin-top:15px;border-radius:11px;padding:13px 15px}.question.correct{border-color:var(--ok)}.question.incorrect{border-color:var(--bad)}.question.correct .explanation,.question.incorrect .explanation,.question.revealed .explanation{display:block}.question.correct .explanation{background:#103d35;color:#c7fae5}.question.incorrect .explanation{background:#442633;color:#ffdbe0}.question.revealed:not(.correct):not(.incorrect) .explanation{background:#172f47;color:#e0edf8}.correct-answer{font-weight:800}.reveal{margin-top:13px;border:1px solid var(--accent2);background:transparent;color:#cffff8;border-radius:10px;padding:9px 13px;font-weight:800;cursor:pointer}.reveal:hover,.reveal:focus-visible{background:#203e52;outline:2px solid var(--accent);outline-offset:2px}
+    .actions{position:sticky;bottom:0;background:rgba(7,18,29,.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:15px 0;margin-top:28px}.actions-inner{width:min(1050px,calc(100% - 28px));margin:auto;display:flex;gap:12px;align-items:center;justify-content:space-between}.button{border:0;border-radius:12px;padding:13px 20px;font-size:1rem;font-weight:850;cursor:pointer}.primary{background:var(--accent2);color:#05231f}.secondary{background:#2b4258;color:var(--text)}.result{display:none;background:#122e45;border:1px solid var(--blue);border-radius:18px;padding:22px;margin:28px 0}.result.show{display:block}.score{font-size:2rem;font-weight:900;color:var(--accent2)}.sources{color:var(--muted);padding:28px 0 60px}.sources h2{color:var(--text)}.missing{outline:3px solid var(--accent);outline-offset:3px}@media(max-width:720px){.actions-inner{align-items:stretch;flex-direction:column}.button{width:100%}.question{padding:19px}.jwt-parts{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back" href="../">← Volver al inicio</a>
+    <span class="kicker">Semana 9</span>
+    <h1>Arquitectura, capas, JWT y protocolos</h1>
+    <p class="lead">Una guía desde conceptos cotidianos hasta sus nombres técnicos. Primero comprende qué responsabilidad tiene cada pieza; después practica con escenarios.</p>
+    <div class="info"><span class="pill">30 preguntas</span><span class="pill">Casos de uso</span><span class="pill">Respuesta explicada</span></div>
+    <div class="notice"><strong>Idea central:</strong> los microservicios no son automáticamente mejores. Permiten desplegar y escalar áreas por separado, pero agregan redes, latencia, monitoreo y consistencia distribuida.</div>
+  </header>
+  <main>
+    <h2 class="section-title">Monolítico frente a microservicios</h2>
+    <section class="concepts">
+      <article class="concept"><h2>¿Qué es una aplicación monolítica?</h2><p>Clientes, productos, facturación y otras áreas se ejecutan como una sola aplicación desplegable. Es sencilla para comenzar y permite transacciones directas, pero al crecer puede quedar muy acoplada.</p></article>
+      <article class="concept"><h2>¿Qué es un microservicio?</h2><p>Es un servicio pequeño y autónomo que representa una capacidad del negocio, como carrito o pagos. Puede desplegarse y escalarse sin publicar toda la aplicación.</p></article>
+    </section>
+    <div class="table-wrap"><table class="comparison">
+      <thead><tr><th>Aspecto</th><th>Monolito</th><th>Microservicios</th></tr></thead>
+      <tbody>
+        <tr><td>Despliegue</td><td>Una aplicación completa.</td><td>Cada servicio puede desplegarse por separado.</td></tr>
+        <tr><td>Escalado</td><td>Se escala toda la aplicación.</td><td>Se escala solo el servicio con mayor demanda.</td></tr>
+        <tr><td>Datos</td><td>Suele compartir una base.</td><td>Cada servicio debería ser dueño de sus datos.</td></tr>
+        <tr><td>Complejidad</td><td>Más simple al inicio.</td><td>Agrega comunicación de red, monitoreo y consistencia eventual.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 class="section-title">API frente a endpoint</h2>
+    <section class="concepts">
+      <article class="concept"><h2>¿Qué es una API?</h2><p>Es el conjunto de reglas y operaciones que una aplicación ofrece para comunicarse con otras. Puede incluir productos, clientes, pedidos y autenticación.</p></article>
+      <article class="concept"><h2>¿Qué es un endpoint?</h2><p>Es una dirección y operación específica dentro de la API. Ejemplo: <code>GET /api/products/8</code>.</p></article>
+      <article class="concept"><h2>Diferencia sencilla</h2><p>La API es como el menú completo de un restaurante; un endpoint es una opción concreta del menú que puedes solicitar.</p></article>
+    </section>
+
+    <h2 class="section-title">¿Para qué sirve cada parte del backend?</h2>
+    <div class="table-wrap"><table class="comparison">
+      <thead><tr><th>Pieza</th><th>Responsabilidad entendible</th><th>Ejemplo</th></tr></thead>
+      <tbody>
+        <tr><td>Controller</td><td>Recibe la solicitud HTTP y devuelve la respuesta.</td><td>Recibe POST /orders.</td></tr>
+        <tr><td>Service</td><td>Ejecuta el caso de uso y coordina reglas.</td><td>Calcula y registra un pedido.</td></tr>
+        <tr><td>DTO</td><td>Transporta solo los datos necesarios.</td><td>Nombre, cantidad y precio.</td></tr>
+        <tr><td>Domain / Dominio</td><td>Contiene entidades y reglas esenciales del negocio.</td><td>Un pedido pagado no se cancela libremente.</td></tr>
+        <tr><td>Middleware</td><td>Actúa en el recorrido general de muchas solicitudes.</td><td>Registra errores o valida un token.</td></tr>
+        <tr><td>Repository</td><td>Encapsula consultas y guardado de datos.</td><td>Busca un producto por ID.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 class="section-title">¿Para qué sirve cada parte de Angular?</h2>
+    <div class="table-wrap"><table class="comparison">
+      <thead><tr><th>Pieza</th><th>Responsabilidad entendible</th></tr></thead>
+      <tbody>
+        <tr><td>Component</td><td>Controla una parte visible de la pantalla y su interacción.</td></tr>
+        <tr><td>Service</td><td>Comparte lógica o consume una API sin recargar el componente.</td></tr>
+        <tr><td>Guard</td><td>Decide si el usuario puede entrar a una ruta; mejora la experiencia, pero no sustituye la seguridad del backend.</td></tr>
+        <tr><td>Interceptor</td><td>Interviene globalmente solicitudes HTTP, por ejemplo para agregar el token.</td></tr>
+        <tr><td>Pipe</td><td>Transforma un valor para mostrarlo, como fecha, moneda o mayúsculas.</td></tr>
+        <tr><td>Module</td><td>Agrupa piezas relacionadas en aplicaciones que usan la organización basada en módulos.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 class="section-title">JWT: explicación técnica y sencilla</h2>
+    <section class="jwt">
+      <p><strong>JWT significa JSON Web Token.</strong> Suele utilizarse para que una API pueda verificar identidad y permisos sin mantener una sesión tradicional en memoria para cada usuario.</p>
+      <div class="jwt-parts">
+        <article class="jwt-part"><strong>1. Header / Encabezado</strong>Indica el tipo de token y el algoritmo de firma, por ejemplo <code>HS256</code>.</article>
+        <article class="jwt-part"><strong>2. Payload / Claims</strong>Contiene afirmaciones como identificador, rol y vencimiento.</article>
+        <article class="jwt-part"><strong>3. Signature / Firma</strong>Permite detectar si alguien modificó el encabezado o los claims.</article>
+      </div>
+      <p><strong>Analogía:</strong> el encabezado indica cómo está fabricado el gafete; los claims dicen de quién es y qué permiso tiene; la firma es el sello que permite comprobar que no fue alterado.</p>
+      <p class="notice"><strong>Aclaración técnica:</strong> un JWT común está codificado con Base64URL y firmado, no cifrado. Su payload puede leerse. En este ejemplo, <code>HS256</code> es el algoritmo de firma; para ocultar contenido se necesitaría cifrado como JWE.</p>
+      <div class="code"><pre><code>HEADER
+{ "alg": "HS256", "typ": "JWT" }
+
+PAYLOAD / CLAIMS
+{ "sub": "42", "role": "Admin", "exp": 1790000000 }
+
+TOKEN
+base64Url(header).base64Url(payload).signature</code></pre></div>
+    </section>
+
+    <h2 class="section-title">Sesión frente a token</h2>
+    <div class="table-wrap"><table class="comparison">
+      <thead><tr><th>Aspecto</th><th>Sesión tradicional</th><th>Token JWT</th></tr></thead>
+      <tbody>
+        <tr><td>Estado</td><td>Normalmente con estado: el servidor guarda la sesión.</td><td>Puede ser sin estado: la API valida firma y claims.</td></tr>
+        <tr><td>Cliente</td><td>Envía un identificador de sesión, normalmente en cookie.</td><td>Envía el token, frecuentemente como Bearer.</td></tr>
+        <tr><td>Revocación</td><td>Suele ser directa eliminando la sesión.</td><td>Puede requerir expiración corta o mecanismos adicionales.</td></tr>
+        <tr><td>Microservicios</td><td>Compartir estado puede complicarse.</td><td>Es útil para transportar identidad entre APIs, pero no es la única opción.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 class="section-title">Protocolos básicos</h2>
+    <section class="protocols">
+      <article class="protocol"><strong>HTTP</strong><p>Comunicación web sin cifrado propio. Comúnmente usa el puerto 80.</p></article>
+      <article class="protocol"><strong>HTTPS</strong><p>HTTP protegido con TLS para cifrar la comunicación. Comúnmente usa el puerto 443.</p></article>
+      <article class="protocol"><strong>FTP</strong><p>Protocolo tradicional para transferir archivos; por sí solo no protege credenciales y contenido.</p></article>
+      <article class="protocol"><strong>SSH</strong><p>Acceso remoto seguro a equipos y ejecución de comandos cifrados. Comúnmente usa el puerto 22.</p></article>
+    </section>
+
+    <form id="quiz" novalidate></form>
+    <section id="result" class="result" aria-live="polite" tabindex="-1"></section>
+    <section class="sources">
+      <h2>Fuentes estudiadas</h2>
+      <ul>
+        <li>PDF de clase: <em>From Monolith to Microservices</em>.</li>
+        <li><a href="https://www.edu-apps.org/lti_public_resources/launch?driver=youtube&amp;remote_id=k3pbXdwlodw" target="_blank" rel="noopener">Recurso audiovisual de la Semana 9</a>.</li>
+      </ul>
+    </section>
+  </main>
+  <div class="actions"><div class="actions-inner"><span id="progress">0 de 30 respondidas</span><div><button class="button secondary" type="button" id="reset">Reiniciar</button> <button class="button primary" type="button" id="grade">Calificar examen</button></div></div></div>
+  <script>
+    const questions=[
+      {q:'Una empresa tiene clientes, productos y facturación dentro del mismo proyecto y publica todo como una sola aplicación. ¿Qué arquitectura describe?',o:['Microservicios independientes','Aplicación monolítica','Solo una base documental','Una red FTP'],a:1,e:'Un monolito reúne varias capacidades en una sola aplicación desplegable.'},
+      {q:'Durante una promoción solo el carrito recibe diez veces más tráfico. La empresa quiere escalarlo sin aumentar facturación. ¿Qué enfoque lo facilita?',o:['Separar el carrito como microservicio','Duplicar toda la aplicación siempre','Mover estilos a CSS','Eliminar la API'],a:0,e:'Un microservicio autónomo puede escalarse de forma independiente según la demanda de su capacidad.'},
+      {q:'Un proyecto pequeño necesita salir rápido y el equipo es reducido. ¿Cuál decisión puede ser razonable al comenzar?',o:['Crear veinte microservicios obligatoriamente','Usar un monolito bien organizado','Evitar toda base de datos','Separar una aplicación por cada tabla'],a:1,e:'Un monolito no es una mala arquitectura; suele ser más simple para comenzar y puede evolucionar después.'},
+      {q:'El equipo propone crear un microservicio por cada tabla: ProductService, PriceService y NameService. ¿Qué problema tiene la idea?',o:['Los servicios deberían representar capacidades del negocio, no tablas aisladas','Toda tabla exige su propio servidor','Los microservicios no usan datos','Los nombres son demasiado cortos'],a:0,e:'Las fronteras deben responder a capacidades como catálogo, carrito o pagos, evitando un monolito distribuido.'},
+      {q:'Una tienda ofrece operaciones para productos, pedidos, pagos y usuarios a otras aplicaciones. ¿Cómo se llama el conjunto completo?',o:['Un endpoint','Una API','Un pipe','Un DTO'],a:1,e:'La API es el conjunto de operaciones y reglas disponibles para comunicarse con el sistema.'},
+      {q:'Dentro de la API existe GET /api/orders/15 para consultar un pedido específico. ¿Qué representa esa dirección y método?',o:['Toda la API','Un endpoint','Una base de datos','Un módulo de Angular'],a:1,e:'Un endpoint es un punto de acceso concreto definido por un método y una ruta.'},
+      {q:'Una persona dice que API y endpoint son exactamente lo mismo. ¿Cuál explicación es más clara?',o:['La API es el menú completo y el endpoint una opción concreta','El endpoint contiene todas las aplicaciones del mundo','La API es únicamente una URL','Ambos son bases de datos'],a:0,e:'Una API reúne múltiples operaciones; cada endpoint identifica una operación específica.'},
+      {q:'Llega POST /orders con los datos de una compra. ¿Qué pieza del backend recibe primero la solicitud HTTP?',o:['Repository','Controller','Pipe','Entidad de base de datos directamente'],a:1,e:'El controller expone el endpoint, recibe la solicitud y devuelve la respuesta.'},
+      {q:'Después de recibir el pedido se debe calcular el total, validar existencias y coordinar el guardado. ¿Qué pieza debería dirigir ese caso de uso?',o:['Service','CSS','Guard de Angular','Archivo de imágenes'],a:0,e:'El service coordina la lógica del caso de uso y colabora con dominio y repositorios.'},
+      {q:'La pantalla solo necesita nombre, cantidad y total del pedido, no toda la entidad interna. ¿Qué conviene enviar?',o:['La contraseña del usuario','Un DTO','Toda la base de datos','Un middleware'],a:1,e:'Un DTO transporta únicamente los datos requeridos entre capas o hacia el cliente.'},
+      {q:'La regla “un pedido pagado no puede editarse libremente” debe cumplirse desde cualquier interfaz. ¿Dónde pertenece?',o:['En el dominio','En el color del botón','En el pipe de moneda','Solo en el navegador'],a:0,e:'El dominio contiene las reglas esenciales del negocio que deben cumplirse sin depender de una pantalla.'},
+      {q:'La API quiere registrar tiempo de respuesta y manejar errores de todas las solicitudes en un solo lugar. ¿Qué pieza es apropiada?',o:['Middleware','DTO','Pipe','Componente'],a:0,e:'El middleware participa en el recorrido general de las solicitudes y sirve para tareas transversales.'},
+      {q:'El servicio necesita buscar un producto por ID sin escribir consultas de datos en cada caso de uso. ¿Qué pieza ayuda?',o:['Controller','Repository','Guard','Module'],a:1,e:'El repository encapsula el acceso y persistencia de datos.'},
+      {q:'La página de productos muestra tarjetas y responde al clic en “Agregar”. ¿Qué pieza de Angular controla esa parte visible?',o:['Component','Middleware','Repository','Schema'],a:0,e:'Un componente maneja una parte de la interfaz y su interacción.'},
+      {q:'Varios componentes necesitan consultar el mismo catálogo desde la API. ¿Dónde conviene colocar esa lógica compartida?',o:['En un servicio de Angular','En cada archivo CSS','En un pipe únicamente','En la base de datos del navegador'],a:0,e:'Un servicio de Angular comparte lógica y centraliza llamadas a la API.'},
+      {q:'Un usuario sin sesión intenta abrir /admin. ¿Qué pieza de Angular puede impedir la navegación y enviarlo a login?',o:['Pipe','Guard','DTO','Repository'],a:1,e:'El guard controla el acceso a rutas en la interfaz, aunque el backend debe verificar permisos nuevamente.'},
+      {q:'Todas las solicitudes HTTP deben incluir Authorization: Bearer token. ¿Qué pieza evita repetir ese código?',o:['Interceptor de Angular','Componente de inicio','Pipe de fecha','Módulo de estilos'],a:0,e:'El interceptor modifica o examina solicitudes HTTP globalmente, por ejemplo agregando el token.'},
+      {q:'La API entrega 1250.5 y la pantalla debe mostrar Q1,250.50. ¿Qué pieza de Angular sirve para transformar la presentación?',o:['Guard','Pipe','Repository','Controller'],a:1,e:'Un pipe transforma un valor para mostrarlo sin cambiar el dato original.'},
+      {q:'Una aplicación Angular tradicional agrupa componentes, pipes y servicios relacionados con ventas. ¿Qué pieza puede organizarlos?',o:['Module','JWT','SSH','Middleware del servidor'],a:0,e:'Un módulo agrupa piezas relacionadas cuando la aplicación utiliza organización basada en módulos.'},
+      {q:'Un JWT aparece como tres bloques separados por puntos. ¿Cuáles son en orden?',o:['Claims, base de datos y ruta','Header, payload y signature','Usuario, contraseña y cookie','GET, POST y DELETE'],a:1,e:'La estructura técnica es header.payload.signature: encabezado, claims y firma.'},
+      {q:'Al explicarlo a una persona no técnica, ¿qué comparación representa mejor las tres partes de JWT?',o:['Reglas del gafete, datos del portador y sello de autenticidad','Tres contraseñas secretas','Tres servidores completos','Pantalla, teclado y ratón'],a:0,e:'El header indica cómo se procesa; el payload contiene datos; la firma funciona como sello contra alteraciones.'},
+      {q:'El header de un token contiene “alg”: “HS256”. ¿Qué indica?',o:['El algoritmo usado para firmar el token','Que todo el payload está oculto','La contraseña del usuario','El protocolo de transferencia de archivos'],a:0,e:'HS256 identifica el algoritmo de firma HMAC con SHA-256; no significa que el contenido esté cifrado.'},
+      {q:'Un desarrollador copia el payload de un JWT común y logra leer sus claims. ¿Por qué?',o:['Porque normalmente está codificado con Base64URL, no cifrado','Porque la firma publica la contraseña','Porque HTTPS elimina la firma','Porque el token es una sesión de base de datos'],a:0,e:'Un JWT firmado protege integridad, no confidencialidad. Los datos sensibles no deben colocarse en el payload.'},
+      {q:'¿Qué función principal cumple la firma de un JWT?',o:['Ocultar todos los claims','Permitir detectar modificaciones y verificar al emisor','Guardar archivos por FTP','Crear un componente Angular'],a:1,e:'La firma permite comprobar integridad y autenticidad; si cambia el contenido, la validación falla.'},
+      {q:'Una API valida cada JWT con su clave y no guarda una sesión en memoria para cada usuario. ¿Es con estado o sin estado?',o:['Con estado obligatorio','Sin estado','Una conexión FTP','Un monolito por definición'],a:1,e:'Este uso es stateless: la información necesaria viaja en el token y la API valida firma y claims.'},
+      {q:'Un servidor guarda sesiones y puede cerrar una eliminándola; otro usa JWT de corta duración. ¿Cuál diferencia es correcta?',o:['La sesión mantiene estado en el servidor; JWT puede validarse sin esa sesión central','JWT siempre guarda más estado en memoria','Las sesiones solo sirven para microservicios','No existe diferencia'],a:0,e:'Las sesiones suelen ser stateful; los JWT permiten autenticación stateless, aunque requieren una estrategia de expiración y revocación.'},
+      {q:'Varios microservicios deben reconocer identidad y rol sin consultar una sesión central en cada petición. ¿Puede ayudar JWT?',o:['Sí, puede transportar claims verificables entre APIs','No, JWT solo sirve para CSS','Sí, pero convierte cada servicio en base de datos','No, únicamente FTP maneja identidad'],a:0,e:'JWT es común en microservicios porque cada API puede verificarlo; aun así deben cuidarse claves, expiración y permisos.'},
+      {q:'Una persona envía su contraseña a un sitio web. ¿Qué protocolo debe preferirse para proteger la comunicación?',o:['HTTP sin cifrado','HTTPS','FTP tradicional','Texto plano'],a:1,e:'HTTPS utiliza TLS para cifrar el tráfico y autenticar al servidor.'},
+      {q:'Un administrador necesita entrar de forma remota a un servidor Linux y ejecutar comandos de manera segura. ¿Qué protocolo corresponde?',o:['SSH','HTTP','FTP sin protección','JSON'],a:0,e:'SSH proporciona una conexión remota cifrada para terminal y administración.'},
+      {q:'Una empresa usa un protocolo tradicional específicamente para transferir archivos, pero sabe que por sí solo no cifra el contenido. ¿Cuál es?',o:['HTTPS','FTP','JWT','REST'],a:1,e:'FTP fue diseñado para transferencia de archivos; para seguridad se prefieren alternativas protegidas como SFTP o FTPS.'}
+    ];
+    const form=document.querySelector('#quiz');
+    questions.forEach((item,i)=>{const block=document.createElement('section');block.className='question';block.dataset.index=i;block.innerHTML='<h2><span class="number">'+(i+1)+'.</span> '+item.q+'</h2>'+item.o.map((option,j)=>'<label class="option"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+option+'</span></label>').join('')+'<button class="reveal" type="button" aria-expanded="false">Ver respuesta</button><div class="explanation"><span class="correct-answer">Respuesta correcta: '+item.o[item.a]+'.</span><br>'+item.e+'</div>';form.appendChild(block)});
+    const progress=document.querySelector('#progress');
+    function updateProgress(){const count=questions.filter((_,i)=>form.querySelector('input[name="q'+i+'"]:checked')).length;progress.textContent=count+' de '+questions.length+' respondidas'}
+    form.addEventListener('change',event=>{event.target.closest('.question').classList.remove('missing');updateProgress()});
+    form.addEventListener('click',event=>{const button=event.target.closest('.reveal');if(!button)return;const block=button.closest('.question');const open=block.classList.toggle('revealed');button.textContent=open?'Ocultar respuesta':'Ver respuesta';button.setAttribute('aria-expanded',String(open))});
+    document.querySelector('#grade').addEventListener('click',()=>{let score=0;let firstMissing=null;questions.forEach((item,i)=>{const block=form.querySelector('[data-index="'+i+'"]');const selected=form.querySelector('input[name="q'+i+'"]:checked');block.classList.remove('correct','incorrect','missing');if(!selected){block.classList.add('missing');if(!firstMissing)firstMissing=block;return}const ok=Number(selected.value)===item.a;block.classList.add(ok?'correct':'incorrect');if(ok)score++});if(firstMissing){firstMissing.scrollIntoView({behavior:'smooth',block:'center'});return}const percent=Math.round(score/questions.length*100);const result=document.querySelector('#result');const status=percent>=70?'¡Buen trabajo! Comprendes los conceptos esenciales de la semana.':'Revisa las respuestas explicadas y vuelve a intentarlo.';result.innerHTML='<div class="score">'+score+'/'+questions.length+' - '+percent+'%</div><p>'+status+'</p>';result.classList.add('show');result.focus();result.scrollIntoView({behavior:'smooth',block:'center'})});
+    document.querySelector('#reset').addEventListener('click',()=>{form.reset();document.querySelectorAll('.question').forEach(element=>element.classList.remove('correct','incorrect','missing','revealed'));document.querySelectorAll('.reveal').forEach(button=>{button.textContent='Ver respuesta';button.setAttribute('aria-expanded','false')});const result=document.querySelector('#result');result.classList.remove('show');result.innerHTML='';updateProgress();scrollTo({top:0,behavior:'smooth'})});
+  </script>
+</body>
+</html>
