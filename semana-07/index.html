@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Examen introductorio de la Semana 7 sobre Laravel, Eloquent ORM, CRUD y fundamentos de API REST.">
+  <meta property="og:title" content="Semana 7 - Laravel, Eloquent y API REST">
+  <meta property="og:description" content="Cuestionario introductorio de 20 preguntas con ejemplos básicos y explicaciones.">
+  <meta property="og:type" content="website">
+  <title>Semana 7 | Laravel, Eloquent y REST</title>
+  <style>
+    :root{color-scheme:dark;--bg:#08111e;--panel:#102237;--panel2:#152d48;--text:#f5f8fc;--muted:#b8c6d6;--accent:#ff7b72;--accent2:#ffd166;--blue:#78a9ff;--ok:#63e6a8;--bad:#ff93a0;--border:#2d4865}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 90% 0,#4a2330 0,transparent 32%),var(--bg);color:var(--text);line-height:1.55}a{color:var(--accent2)}header,main{width:min(920px,calc(100% - 28px));margin:auto}header{padding:38px 0 24px}.back{text-decoration:none;font-weight:750}.kicker{display:block;margin-top:35px;color:var(--accent);font-weight:850;letter-spacing:.1em;text-transform:uppercase}h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.08;margin:.35rem 0 .8rem}.lead{font-size:1.08rem;color:var(--muted);max-width:760px}.info{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.pill{background:#263147;border:1px solid var(--border);padding:7px 12px;border-radius:999px;color:#e3ebf4;font-size:.9rem}.notice{background:#33252f;border-left:4px solid var(--accent);padding:16px 18px;border-radius:10px;margin:16px 0 30px;color:#f6e8ed}
+    .concepts{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:30px}.concept{background:#10263d;border:1px solid var(--border);border-radius:15px;padding:18px}.concept h2{font-size:1.05rem;margin:0 0 8px;color:var(--accent2)}.concept p{color:var(--muted);margin:0}.example{background:#07101a;border:1px solid #35516b;border-radius:14px;padding:18px;margin:0 0 34px;overflow:auto}.example h2{font-size:1.08rem;margin-top:0}.example pre{margin:0;white-space:pre-wrap;color:#d7f6ec;font-size:.9rem}.example .hint{color:var(--muted);font-size:.9rem;margin-bottom:10px}
+    .question{background:linear-gradient(150deg,var(--panel2),var(--panel));border:1px solid var(--border);border-radius:18px;padding:24px;margin:18px 0}.question h2{font-size:1.08rem;margin:0 0 18px}.number{color:var(--accent2);font-weight:850}.option{display:flex;gap:12px;align-items:flex-start;border:1px solid #385572;border-radius:12px;padding:12px 14px;margin:9px 0;cursor:pointer;transition:.15s background,.15s border-color}.option:hover,.option:focus-within{background:#1b3853;border-color:var(--blue)}input[type=radio]{margin-top:5px;accent-color:var(--accent);transform:scale(1.15)}.explanation{display:none;margin-top:15px;border-radius:11px;padding:13px 15px}.question.correct{border-color:var(--ok)}.question.incorrect{border-color:var(--bad)}.question.correct .explanation,.question.incorrect .explanation{display:block}.question.correct .explanation{background:#103d35;color:#c7fae5}.question.incorrect .explanation{background:#442633;color:#ffdbe0}.correct-answer{font-weight:800}
+    .actions{position:sticky;bottom:0;background:rgba(8,17,30,.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:15px 0;margin-top:28px}.actions-inner{width:min(920px,calc(100% - 28px));margin:auto;display:flex;gap:12px;align-items:center;justify-content:space-between}.button{border:0;border-radius:12px;padding:13px 20px;font-size:1rem;font-weight:850;cursor:pointer}.primary{background:var(--accent);color:#250a0d}.secondary{background:#273d56;color:var(--text)}.result{display:none;background:#122e45;border:1px solid var(--blue);border-radius:18px;padding:22px;margin:28px 0}.result.show{display:block}.score{font-size:2rem;font-weight:900;color:var(--accent2)}.sources{color:var(--muted);padding:28px 0 60px}.sources h2{color:var(--text)}.sources li{margin:8px 0}.sources a{overflow-wrap:anywhere}.missing{outline:3px solid var(--accent2);outline-offset:3px}@media(max-width:600px){.actions-inner{align-items:stretch;flex-direction:column}.button{width:100%}.question{padding:19px}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back" href="../">← Volver al inicio</a>
+    <span class="kicker">Semana 7</span>
+    <h1>Laravel, Eloquent y API REST</h1>
+    <p class="lead">Conceptos introductorios de ORM y ODM, operaciones CRUD, rutas dinámicas, verbos HTTP y contratos REST.</p>
+    <div class="info"><span class="pill">20 preguntas</span><span class="pill">Nivel básico</span><span class="pill">Nota sugerida: 70%</span></div>
+    <div class="notice"><strong>Enfoque:</strong> comprender para qué sirve cada herramienta. Los ejemplos son deliberadamente pequeños y no requieren conocimientos avanzados de Laravel.</div>
+  </header>
+  <main>
+    <section class="concepts" aria-label="Conceptos esenciales">
+      <article class="concept"><h2>ORM</h2><p>Relaciona objetos del programa con tablas de una base de datos relacional. Eloquent es el ORM de Laravel.</p></article>
+      <article class="concept"><h2>ODM</h2><p>Relaciona objetos del programa con documentos de una base de datos documental, como MongoDB.</p></article>
+      <article class="concept"><h2>CRUD</h2><p>Create, Read, Update y Delete: crear, consultar, actualizar y eliminar información.</p></article>
+      <article class="concept"><h2>API REST</h2><p>Expone recursos mediante URLs y utiliza verbos HTTP como GET, POST, PUT y DELETE.</p></article>
+    </section>
+    <section class="example">
+      <h2>Ejemplo mínimo: guardar y exponer un producto</h2>
+      <p class="hint">La idea importante es reconocer la ruta, el modelo, <code>save()</code> y la respuesta JSON.</p>
+      <pre><code>Route::post('/api/products', function (Request $request) {
+    $product = new Product();
+    $product->name = $request->name;
+    $product->save();
+
+    return response()->json($product, 201);
+});</code></pre>
+    </section>
+    <form id="quiz" novalidate></form>
+    <section id="result" class="result" aria-live="polite" tabindex="-1"></section>
+    <section class="sources">
+      <h2>Fuentes estudiadas</h2>
+      <ul>
+        <li>PDF de clase: <em>Full-Stack Architecture, REST Contracts & Security</em>.</li>
+        <li><a href="https://styde.net/rutas-con-parametros-dinamicos-en-laravel-10/" target="_blank" rel="noopener">Styde: rutas con parámetros dinámicos en Laravel 10</a>.</li>
+        <li><a href="https://styde.net/seleccion-con-subconsultas-de-sql-en-eloquent-orm-a-partir-de-laravel-6-parte-2/" target="_blank" rel="noopener">Styde: subconsultas de SQL con Eloquent ORM</a>.</li>
+        <li><a href="https://dev.to/johantovar/aprende-eloquent-con-ejemplos-2ld7" target="_blank" rel="noopener">DEV Community: Eloquent con ejemplos</a>.</li>
+      </ul>
+    </section>
+  </main>
+  <div class="actions"><div class="actions-inner"><span id="progress">0 de 20 respondidas</span><div><button class="button secondary" type="button" id="reset">Reiniciar</button> <button class="button primary" type="button" id="grade">Calificar examen</button></div></div></div>
+  <script>
+    const questions=[
+      {q:'¿Para qué sirve principalmente un ORM?',o:['Para diseñar colores de la interfaz','Para trabajar con tablas relacionales mediante objetos y modelos','Para reemplazar el protocolo HTTP','Para crear contraseñas automáticamente'],a:1,e:'Un ORM traduce operaciones sobre objetos o modelos a operaciones en una base de datos relacional.'},
+      {q:'¿Cuál es la diferencia básica entre ORM y ODM?',o:['El ORM trabaja con tablas relacionales y el ODM con documentos','El ORM solo sirve para CSS','El ODM reemplaza todas las API','No existe ninguna diferencia'],a:0,e:'ORM se asocia con bases relacionales; ODM con bases orientadas a documentos.'},
+      {q:'¿Qué es Eloquent dentro de Laravel?',o:['Un navegador web','El ORM incluido con Laravel','Un servidor DNS','Una hoja de estilos'],a:1,e:'Eloquent permite representar tablas como modelos y consultar o modificar registros desde PHP.'},
+      {q:'En CRUD, ¿qué significa la letra C?',o:['Connect','Create','Compile','Close'],a:1,e:'Create es la operación utilizada para crear un nuevo recurso o registro.'},
+      {q:'¿Qué instrucción guarda normalmente un nuevo modelo de Eloquent después de asignar sus datos?',o:['$product->save();','$product->paint();','$product->route();','$product->html();'],a:0,e:'save() persiste en la base de datos los cambios realizados sobre el modelo.'},
+      {q:'¿Qué operación CRUD representa obtener una lista de productos?',o:['Create','Read','Update','Delete'],a:1,e:'Consultar o leer datos corresponde a Read.'},
+      {q:'¿Qué verbo HTTP se utiliza normalmente para consultar recursos?',o:['GET','POST','DELETE','PATCH exclusivamente para lectura'],a:0,e:'GET solicita la representación de uno o varios recursos sin crear uno nuevo.'},
+      {q:'¿Qué verbo HTTP se utiliza normalmente para crear un recurso?',o:['GET','POST','DELETE','HEAD'],a:1,e:'POST suele enviar los datos necesarios para crear un recurso nuevo.'},
+      {q:'¿Qué combinación representa correctamente actualizar y eliminar?',o:['PUT y DELETE','GET y POST','HTML y CSS','SELECT y Route'],a:0,e:'PUT se usa comúnmente para actualizar y DELETE para eliminar.'},
+      {q:'En la ruta notas/{id}/editar, ¿qué representa {id}?',o:['Un color opcional','Un parámetro dinámico de la ruta','El nombre de la base de datos','Un código HTTP'],a:1,e:'El valor puede cambiar en cada URL y permite identificar la nota que se desea editar.'},
+      {q:'¿Para qué sirve whereNumber("id") o una restricción numérica equivalente en Laravel?',o:['Para aceptar solamente IDs numéricos','Para convertir la ruta en CSS','Para guardar el modelo','Para borrar todas las rutas'],a:0,e:'La restricción evita que la ruta coincida cuando el parámetro no tiene el formato numérico esperado.'},
+      {q:'¿Cuándo conviene utilizar un parámetro de ruta como /api/products/25?',o:['Para identificar directamente un producto específico','Para elegir el color de la página','Para ocultar el verbo HTTP','Para instalar Laravel'],a:0,e:'Los parámetros de ruta son adecuados para identificar recursos concretos mediante un ID u otra clave.'},
+      {q:'¿Cuándo conviene utilizar una cadena de consulta como ?category=books?',o:['Para filtrar una colección de productos','Para identificar obligatoriamente un único registro','Para crear una tabla SQL','Para reemplazar el controlador'],a:0,e:'Las query strings suelen modificar, filtrar, ordenar o paginar una colección.'},
+      {q:'Una API crea correctamente un producto. ¿Qué código HTTP es el más representativo?',o:['201 Created','404 Not Found','401 Unauthorized','500 Internal Server Error'],a:0,e:'201 comunica que la solicitud produjo la creación exitosa de un recurso.'},
+      {q:'Se solicita /api/products/999 y ese producto no existe. ¿Qué respuesta corresponde?',o:['200 OK','201 Created','404 Not Found','403 siempre'],a:2,e:'404 indica que el recurso solicitado no fue encontrado.'},
+      {q:'¿Qué describe mejor una API REST básica?',o:['Recursos accesibles por URLs y operaciones mediante verbos HTTP','Una aplicación que solo usa archivos CSS','Una base de datos sin servidor','Un reemplazo de PHP'],a:0,e:'REST organiza la interacción alrededor de recursos y usa las reglas de HTTP para operar con ellos.'},
+      {q:'¿Para qué se usa una migración en Laravel?',o:['Para describir y versionar cambios en la estructura de la base de datos','Para calificar exámenes','Para sustituir los modelos','Para diseñar botones'],a:0,e:'Las migraciones permiten crear o modificar tablas de forma repetible entre ambientes.'},
+      {q:'¿Para qué sirve un seeder?',o:['Para cargar datos iniciales o de prueba','Para bloquear todas las rutas','Para cambiar GET por POST','Para crear estilos'],a:0,e:'Los seeders insertan conjuntos de datos reproducibles, útiles durante desarrollo y pruebas.'},
+      {q:'¿Qué es una subconsulta SQL en términos sencillos?',o:['Una consulta incluida dentro de otra consulta','Un archivo de Angular','Un verbo HTTP','Una contraseña cifrada'],a:0,e:'Una subconsulta calcula o selecciona información que la consulta principal puede utilizar; Eloquent puede expresarla con métodos como addSelect.'},
+      {q:'¿Cuál afirmación sobre seguridad es correcta?',o:['Un guard del frontend sustituye toda validación del servidor','El backend debe validar autenticación y permisos aunque el frontend use guards','Guardar un JWT convierte cualquier usuario en administrador','Un parámetro de ruta siempre es seguro'],a:1,e:'Los guards mejoran la experiencia, pero la API debe aplicar la seguridad porque el cliente puede manipularse.'}
+    ];
+    const form=document.querySelector('#quiz');
+    questions.forEach((item,i)=>{const block=document.createElement('section');block.className='question';block.dataset.index=i;block.innerHTML='<h2><span class="number">'+(i+1)+'.</span> '+item.q+'</h2>'+item.o.map((option,j)=>'<label class="option"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+option+'</span></label>').join('')+'<div class="explanation"><span class="correct-answer">Respuesta correcta: '+item.o[item.a]+'.</span><br>'+item.e+'</div>';form.appendChild(block)});
+    const progress=document.querySelector('#progress');
+    function updateProgress(){const count=questions.filter((_,i)=>form.querySelector('input[name="q'+i+'"]:checked')).length;progress.textContent=count+' de '+questions.length+' respondidas'}
+    form.addEventListener('change',event=>{event.target.closest('.question').classList.remove('missing');updateProgress()});
+    document.querySelector('#grade').addEventListener('click',()=>{let score=0;let firstMissing=null;questions.forEach((item,i)=>{const block=form.querySelector('[data-index="'+i+'"]');const selected=form.querySelector('input[name="q'+i+'"]:checked');block.classList.remove('correct','incorrect','missing');if(!selected){block.classList.add('missing');if(!firstMissing)firstMissing=block;return}const ok=Number(selected.value)===item.a;block.classList.add(ok?'correct':'incorrect');if(ok)score++});if(firstMissing){firstMissing.scrollIntoView({behavior:'smooth',block:'center'});return}const percent=Math.round(score/questions.length*100);const result=document.querySelector('#result');const status=percent>=70?'¡Buen trabajo! Comprendes los fundamentos de la semana.':'Repasa los conceptos iniciales y las explicaciones antes de intentarlo nuevamente.';result.innerHTML='<div class="score">'+score+'/'+questions.length+' - '+percent+'%</div><p>'+status+'</p>';result.classList.add('show');result.focus();result.scrollIntoView({behavior:'smooth',block:'center'})});
+    document.querySelector('#reset').addEventListener('click',()=>{form.reset();document.querySelectorAll('.question').forEach(element=>element.classList.remove('correct','incorrect','missing'));const result=document.querySelector('#result');result.classList.remove('show');result.innerHTML='';updateProgress();scrollTo({top:0,behavior:'smooth'})});
+  </script>
+</body>
+</html>
