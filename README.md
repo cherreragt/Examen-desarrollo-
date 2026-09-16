@@ -8,6 +8,7 @@ Repositorio de estudio organizado por semanas. Cada evaluación combina las lect
 - [Semana 7 - Laravel, Eloquent ORM y fundamentos de API REST](semana-07/index.html)
 - [Semana 8 - SOAP, REST, HTTP, JSON/XML y migraciones](semana-08/index.html)
 - [Semana 9 - Monolitos, microservicios, API, capas, JWT y protocolos](semana-09/index.html)
+- [Semana 10 - Bases de datos, endpoints y seguridad de APIs](semana-10/index.html)
 
 ## Cómo usarlo
 
@@ -45,5 +46,11 @@ Abre `index.html` desde GitHub Pages o descarga el repositorio y abre el archivo
 
 - Material de clase: *From Monolith to Microservices*.
 - Recurso audiovisual proporcionado para la semana.
+
+## Fuentes de la Semana 10
+
+- Material de clase: *Web Systems Architecture, API Security & OAuth2 Protocols*.
+- Video: motores de bases de datos relacionales.
+- Video: ejemplos de bases de datos NoSQL.
 
 > Las evaluaciones son material de práctica académica y no sustituyen las indicaciones del docente.
