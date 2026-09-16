@@ -54,58 +54,10 @@
       </tbody>
     </table></div>
 
-    <h2 class="section-title">Sección independiente: todo lo básico de un endpoint</h2>
-    <p>Un endpoint es una operación concreta que una API expone. No es únicamente la URL: también incluye el método HTTP, las entradas esperadas, validaciones y posibles respuestas.</p>
-    <section class="endpoint-anatomy">
-      <article class="endpoint-part"><strong>Método HTTP</strong>GET consulta, POST crea o ejecuta una acción, PUT actualiza y DELETE elimina.</article>
-      <article class="endpoint-part"><strong>Ruta</strong><code>/api/products</code> identifica el recurso o acción disponible.</article>
-      <article class="endpoint-part"><strong>Path parameter</strong><code>/api/products/5</code> identifica un recurso concreto.</article>
-      <article class="endpoint-part"><strong>Query parameter</strong><code>?active=true</code> filtra, ordena o pagina.</article>
-      <article class="endpoint-part"><strong>Headers</strong>Metadatos como Content-Type y Authorization.</article>
-      <article class="endpoint-part"><strong>Body</strong>Datos enviados normalmente en POST, PUT o PATCH.</article>
-      <article class="endpoint-part"><strong>Validaciones</strong>Comprueban tipos, campos obligatorios y reglas del negocio.</article>
-      <article class="endpoint-part"><strong>Respuesta</strong>Código HTTP y cuerpo JSON que explican el resultado.</article>
-    </section>
-
-    <h2 class="section-title">Ejemplo de POST en Node.js</h2>
-    <section class="code-grid">
-      <article class="code-card"><h3>Implementación mínima con Express</h3><pre><code>app.post('/api/accion', (req, res) => {
-  const { edad } = req.body;
-
-  if (typeof edad !== 'number') {
-    return res.status(400).json({
-      error: 'La edad es obligatoria y numérica'
-    });
-  }
-
-  if (edad > 18) {
-    return res.status(200).json({
-      message: 'Acción permitida'
-    });
-  }
-
-  return res.status(403).json({
-    error: 'Debes ser mayor de 18 años'
-  });
-});</code></pre></article>
-      <article class="code-card"><h3>Pseudocontrato independiente del lenguaje</h3><pre><code>MÉTODO: POST
-ENDPOINT: /api/accion
-
-ENTRADA:
-  Body JSON con "edad"
-
-VALIDACIONES:
-  SI edad no existe o no es número
-    RESPONDER 400 Bad Request
-
-CASO CORRECTO:
-  SI edad > 18
-    RESPONDER 200 OK
-    { "message": "Acción permitida" }
-
-CASO NO PERMITIDO:
-  EN CASO CONTRARIO
-    RESPONDER 403 Forbidden</code></pre></article>
+    <h2 class="section-title">Guía independiente para crear endpoints</h2>
+    <section class="notice">
+      La anatomía completa de un endpoint, el ejemplo <code>POST /api/accion</code>, su implementación en Node.js y el pseudocontrato ahora se encuentran en un HTML separado.
+      <br><br><a href="guia-endpoints.html"><strong>Abrir guía de endpoints →</strong></a>
     </section>
 
     <h2 class="section-title">Seguridad y arquitectura del material de clase</h2>
