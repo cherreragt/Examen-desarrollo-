@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Semana 8: introducción a SOAP, REST, HTTP, JSON, XML, URI y migraciones de base de datos.">
+  <meta property="og:title" content="Semana 8 - SOAP, REST, HTTP y formatos de datos">
+  <meta property="og:description" content="Guía y examen interactivo con casos, ejemplos, respuestas y explicaciones.">
+  <meta property="og:type" content="website">
+  <title>Semana 8 | SOAP, REST, HTTP y JSON/XML</title>
+  <style>
+    :root{color-scheme:dark;--bg:#07121f;--panel:#10253a;--panel2:#15314a;--text:#f5f9fc;--muted:#b9c9d8;--accent:#a98bff;--accent2:#57d9c8;--blue:#78a9ff;--ok:#63e6a8;--bad:#ff93a0;--border:#304d69}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 92% 0,#372b63 0,transparent 34%),var(--bg);color:var(--text);line-height:1.55}a{color:var(--accent2)}header,main{width:min(980px,calc(100% - 28px));margin:auto}header{padding:38px 0 24px}.back{text-decoration:none;font-weight:750}.kicker{display:block;margin-top:35px;color:var(--accent);font-weight:850;letter-spacing:.1em;text-transform:uppercase}h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.08;margin:.35rem 0 .8rem}.lead{font-size:1.08rem;color:var(--muted);max-width:800px}.info{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.pill{background:#24334d;border:1px solid var(--border);padding:7px 12px;border-radius:999px;color:#e6edf6;font-size:.9rem}.notice{background:#292643;border-left:4px solid var(--accent);padding:16px 18px;border-radius:10px;margin:16px 0 30px;color:#eeeaff}
+    .concepts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:24px}.concept{background:#10283f;border:1px solid var(--border);border-radius:16px;padding:19px}.concept h2{font-size:1.08rem;margin:0 0 8px;color:var(--accent2)}.concept p{color:var(--muted);margin:0}.section-title{margin:34px 0 14px}.comparison{width:100%;border-collapse:collapse;background:#0e2236;border:1px solid var(--border)}.comparison th,.comparison td{padding:12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}.comparison th{color:var(--accent2);background:#162d45}.examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}.example{background:#07101a;border:1px solid #3b5872;border-radius:14px;padding:17px;overflow:auto}.example h3{font-size:1rem;margin:0 0 9px;color:var(--accent2)}pre{margin:0;white-space:pre-wrap;color:#d9f4ee;font-size:.86rem}.scenarios{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-bottom:34px}.scenario{background:#172b42;border:1px solid var(--border);border-radius:13px;padding:15px}.status{color:var(--accent2);font-weight:900;font-size:1.1rem}
+    .question{background:linear-gradient(150deg,var(--panel2),var(--panel));border:1px solid var(--border);border-radius:18px;padding:24px;margin:18px 0}.question h2{font-size:1.08rem;margin:0 0 18px}.number{color:var(--accent2);font-weight:850}.option{display:flex;gap:12px;align-items:flex-start;border:1px solid #3b5874;border-radius:12px;padding:12px 14px;margin:9px 0;cursor:pointer}.option:hover,.option:focus-within{background:#1c3a55;border-color:var(--blue)}input[type=radio]{margin-top:5px;accent-color:var(--accent);transform:scale(1.15)}.explanation{display:none;margin-top:15px;border-radius:11px;padding:13px 15px}.question.correct{border-color:var(--ok)}.question.incorrect{border-color:var(--bad)}.question.correct .explanation,.question.incorrect .explanation,.question.revealed .explanation{display:block}.question.correct .explanation{background:#103d35;color:#c7fae5}.question.incorrect .explanation{background:#442633;color:#ffdbe0}.question.revealed:not(.correct):not(.incorrect) .explanation{background:#172f47;color:#e0edf8}.correct-answer{font-weight:800}.reveal{margin-top:13px;border:1px solid var(--accent2);background:transparent;color:#cffff8;border-radius:10px;padding:9px 13px;font-weight:800;cursor:pointer}.reveal:hover,.reveal:focus-visible{background:#203c52;outline:2px solid var(--accent);outline-offset:2px}
+    .actions{position:sticky;bottom:0;background:rgba(7,18,31,.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:15px 0;margin-top:28px}.actions-inner{width:min(980px,calc(100% - 28px));margin:auto;display:flex;gap:12px;align-items:center;justify-content:space-between}.button{border:0;border-radius:12px;padding:13px 20px;font-size:1rem;font-weight:850;cursor:pointer}.primary{background:var(--accent2);color:#05231f}.secondary{background:#293f59;color:var(--text)}.result{display:none;background:#122e45;border:1px solid var(--blue);border-radius:18px;padding:22px;margin:28px 0}.result.show{display:block}.score{font-size:2rem;font-weight:900;color:var(--accent2)}.sources{color:var(--muted);padding:28px 0 60px}.sources h2{color:var(--text)}.sources li{margin:8px 0}.sources a{overflow-wrap:anywhere}.missing{outline:3px solid var(--accent2);outline-offset:3px}@media(max-width:650px){.actions-inner{align-items:stretch;flex-direction:column}.button{width:100%}.question{padding:19px}.comparison{display:block;overflow-x:auto}.examples{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back" href="../">← Volver al inicio</a>
+    <span class="kicker">Semana 8</span>
+    <h1>SOAP, REST, HTTP y formatos de datos</h1>
+    <p class="lead">Antes del examen encontrarás definiciones y ejemplos pequeños. La meta es reconocer cuándo usar cada concepto, no memorizar palabras aisladas.</p>
+    <div class="info"><span class="pill">20 preguntas</span><span class="pill">Casos cotidianos</span><span class="pill">Respuesta explicada</span></div>
+    <div class="notice"><strong>Orden de estudio:</strong> comienza con SOAP, REST y HTTP; compara JSON con XML; después revisa URI y migraciones.</div>
+  </header>
+  <main>
+    <section class="concepts" aria-label="Conceptos iniciales de servicios web">
+      <article class="concept"><h2>¿Qué es una API REST?</h2><p>Es una forma de exponer recursos mediante URLs y operaciones HTTP. Por ejemplo, <code>GET /api/products/5</code> consulta el producto 5.</p></article>
+      <article class="concept"><h2>¿Qué es SOAP?</h2><p>Es un protocolo de mensajería para servicios web. Usa mensajes XML con una estructura formal llamada <em>Envelope</em>.</p></article>
+      <article class="concept"><h2>¿Qué es HTTP?</h2><p>Es el protocolo usado para enviar solicitudes y respuestas. Incluye métodos como GET y POST, además de códigos como 200, 201 y 404.</p></article>
+      <article class="concept"><h2>¿Qué es un schema en SOAP?</h2><p>Un esquema XSD define la estructura y los tipos permitidos en los mensajes XML: campos, números, textos y elementos obligatorios.</p></article>
+    </section>
+
+    <h2 class="section-title">SOAP frente a REST</h2>
+    <table class="comparison">
+      <thead><tr><th>Aspecto</th><th>SOAP</th><th>REST</th></tr></thead>
+      <tbody>
+        <tr><td>Naturaleza</td><td>Protocolo con reglas formales.</td><td>Estilo para diseñar servicios alrededor de recursos.</td></tr>
+        <tr><td>Formato común</td><td>XML.</td><td>Normalmente JSON, aunque puede usar otros formatos.</td></tr>
+        <tr><td>Contrato</td><td>Suele describirse con WSDL y esquemas XSD.</td><td>Usa endpoints y métodos HTTP; puede documentarse con OpenAPI.</td></tr>
+        <tr><td>Uso sencillo</td><td>Servicios con contratos XML estrictos.</td><td>Aplicaciones web y móviles con APIs ligeras.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="section-title">Ejemplo mínimo de un servicio REST y uno SOAP</h2>
+    <section class="examples">
+      <article class="example"><h3>REST: consultar producto 5</h3><pre><code>GET /api/products/5
+
+Respuesta 200 OK
+{
+  "id": 5,
+  "name": "Teclado",
+  "price": 250
+}</code></pre></article>
+      <article class="example"><h3>SOAP: consultar producto 5</h3><pre><code>POST /ProductService
+Content-Type: text/xml
+
+&lt;soap:Envelope&gt;
+  &lt;soap:Body&gt;
+    &lt;GetProduct&gt;
+      &lt;id&gt;5&lt;/id&gt;
+    &lt;/GetProduct&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</code></pre></article>
+    </section>
+
+    <h2 class="section-title">La misma información en JSON y XML</h2>
+    <section class="examples">
+      <article class="example"><h3>JSON con 4 atributos</h3><pre><code>{
+  "id": 5,
+  "name": "Teclado",
+  "price": 250,
+  "available": true
+}</code></pre></article>
+      <article class="example"><h3>XML con los mismos 4 atributos</h3><pre><code>&lt;product&gt;
+  &lt;id&gt;5&lt;/id&gt;
+  &lt;name&gt;Teclado&lt;/name&gt;
+  &lt;price&gt;250&lt;/price&gt;
+  &lt;available&gt;true&lt;/available&gt;
+&lt;/product&gt;</code></pre></article>
+    </section>
+    <p class="notice"><strong>Diferencia principal:</strong> ambos representan datos estructurados y son legibles. JSON suele ser más compacto; XML usa etiquetas de apertura y cierre y puede validarse formalmente con esquemas.</p>
+
+    <h2 class="section-title">Códigos HTTP en tres escenarios</h2>
+    <section class="scenarios">
+      <article class="scenario"><span class="status">201 Created</span><p>La tienda recibió un POST y creó correctamente un producto.</p></article>
+      <article class="scenario"><span class="status">400 Bad Request</span><p>El formulario envió un precio inválido o dejó un campo obligatorio vacío.</p></article>
+      <article class="scenario"><span class="status">404 Not Found</span><p>El cliente solicitó el producto 999, pero no existe.</p></article>
+    </section>
+
+    <form id="quiz" novalidate></form>
+    <section id="result" class="result" aria-live="polite" tabindex="-1"></section>
+    <section class="sources">
+      <h2>Fuentes estudiadas</h2>
+      <ul>
+        <li>PDF de clase: <em>Application + Database Evolution with Entity Framework Core</em>.</li>
+        <li><a href="https://www.javaguides.net/2025/03/rest-api-uri-naming-conventions.html?m=1" target="_blank" rel="noopener">JavaGuides: convenciones para nombres de URI REST</a>.</li>
+        <li><a href="https://tutoriales.edu.lat/pub/json/json-comparison/json-comparacion-con-xml" target="_blank" rel="noopener">Tutoriales.edu.lat: JSON comparado con XML</a>.</li>
+      </ul>
+    </section>
+  </main>
+  <div class="actions"><div class="actions-inner"><span id="progress">0 de 20 respondidas</span><div><button class="button secondary" type="button" id="reset">Reiniciar</button> <button class="button primary" type="button" id="grade">Calificar examen</button></div></div></div>
+  <script>
+    const questions=[
+      {q:'Una aplicación móvil consulta productos con GET /api/products y crea pedidos con POST /api/orders. ¿Qué tipo de servicio está consumiendo?',o:['Una API REST','Un archivo CSS','Una copia de seguridad','Una tabla sin servicio'],a:0,e:'Una API REST expone recursos mediante URLs y utiliza los métodos de HTTP para operar con ellos.'},
+      {q:'Un banco intercambia mensajes XML dentro de un Envelope y exige un contrato formal para cada operación. ¿Qué tecnología está usando?',o:['SOAP','JSON aislado','CSS','Una migración'],a:0,e:'SOAP es un protocolo de servicios web basado en mensajes estructurados, normalmente XML.'},
+      {q:'Un proveedor SOAP debe indicar que id es numérico y name es texto obligatorio. ¿Qué documento define esas reglas?',o:['Un esquema XSD','Una hoja CSS','Un archivo de imágenes','Un código 404'],a:0,e:'El esquema XSD define elementos, tipos de datos y restricciones para los mensajes XML.'},
+      {q:'Una integración empresarial exige XML y un contrato muy estricto; otra aplicación móvil busca mensajes JSON sencillos. ¿Qué opción encaja mejor en cada caso?',o:['SOAP para la integración estricta y REST para la aplicación móvil','REST para todo contrato XML y CSS para la aplicación','SOAP para estilos y REST para copias','Ninguna usa servicios web'],a:0,e:'SOAP ofrece contratos XML formales; REST suele resultar más ligero para clientes web y móviles.'},
+      {q:'Una API debe enviar id, nombre, precio y disponibilidad usando la menor cantidad de texto posible. ¿Qué formato suele ser más compacto?',o:['JSON','XML con muchas etiquetas','HTML completo','SQL'],a:0,e:'JSON representa pares clave-valor sin repetir etiquetas de apertura y cierre, por lo que suele ser menos verboso.'},
+      {q:'Dos sistemas representan exactamente los mismos cuatro datos, uno en JSON y otro en XML. ¿Cuál afirmación es correcta?',o:['Ambos pueden representar la misma información con sintaxis diferente','XML no puede guardar textos','JSON solo sirve para imágenes','Ninguno puede enviarse por red'],a:0,e:'JSON y XML pueden describir la misma estructura; cambia su sintaxis y forma de procesamiento.'},
+      {q:'Un equipo debe nombrar la colección completa de clientes. ¿Cuál URI es más clara?',o:['/customers','/getCustomerList','/customer para toda la colección','/doCustomers'],a:0,e:'Las URI REST representan recursos con sustantivos y normalmente usan plural para colecciones.'},
+      {q:'Se necesita una URI legible para categorías de productos. ¿Cuál sigue una convención clara?',o:['/product-categories','/Product_Categories','/GETCategories','/product Categories'],a:0,e:'Se prefieren minúsculas y guiones para separar palabras; mejora la consistencia y la lectura.'},
+      {q:'Una tienda quiere filtrar productos activos y ordenarlos por precio sin crear otra ruta. ¿Qué URL conviene?',o:['/products?active=true&sort=price','/getActiveProductsSortedByPrice','/products/delete','/POST-products'],a:0,e:'Los parámetros de consulta sirven para filtrar, ordenar, buscar y paginar colecciones.'},
+      {q:'Se quiere consultar los pedidos del cliente 8 mostrando claramente la relación. ¿Qué URI es apropiada?',o:['/customers/8/orders','/getOrdersCustomerEight','/orders_action_8','/customerOrdersDo'],a:0,e:'Las barras pueden expresar una jerarquía natural entre recursos: cliente y sus pedidos.'},
+      {q:'Una tienda creó correctamente un producto nuevo. ¿Qué código comunica mejor el resultado?',o:['201 Created','404 Not Found','400 Bad Request','500 Internal Server Error'],a:0,e:'201 indica que la solicitud produjo correctamente un recurso nuevo.'},
+      {q:'El formulario envió un precio con letras y la API no puede validar la solicitud. ¿Qué código corresponde?',o:['400 Bad Request','201 Created','404 Not Found','204 No Content'],a:0,e:'400 comunica que la solicitud del cliente contiene datos inválidos o no cumple la validación.'},
+      {q:'El cliente solicita /products/999, pero el registro no existe. ¿Qué debe responder la API?',o:['404 Not Found','201 Created','200 con un producto inventado','401 siempre'],a:0,e:'404 indica que no se encontró el recurso identificado por la URL.'},
+      {q:'Un usuario no envía credenciales y otro sí inició sesión, pero no es administrador. ¿Qué códigos describen esos casos?',o:['401 para el primero y 403 para el segundo','403 para el primero y 201 para el segundo','200 para ambos','404 para ambos'],a:0,e:'401 significa que falta autenticación válida; 403 significa que la identidad es conocida pero no tiene permiso.'},
+      {q:'El equipo agrega la propiedad Stock a la entidad Product y necesita actualizar la estructura de la base de datos de forma versionada. ¿Qué debe generar?',o:['Una migración de EF Core','Una copia de seguridad como reemplazo','Una hoja CSS','Un mensaje SOAP'],a:0,e:'Una migración registra la transformación necesaria para hacer evolucionar el esquema junto con el código.'},
+      {q:'Antes de un cambio, la empresa quiere poder recuperar todos sus datos si ocurre un desastre. ¿Qué necesita?',o:['Una copia de seguridad','Solo una migración','Una nueva URI','Un documento JSON vacío'],a:0,e:'Una migración transforma estructuras; una copia de seguridad preserva el estado de datos para recuperación.'},
+      {q:'Una migración agrega la columna Stock. Si se revierte, debe eliminar exactamente ese cambio. ¿Qué métodos cumplen esas funciones?',o:['Up() agrega y Down() revierte','GET agrega y POST revierte','JSON agrega y XML revierte','save() y CSS'],a:0,e:'Up() aplica el cambio hacia adelante y Down() describe cómo deshacerlo.'},
+      {q:'El archivo de migración está en Git, pero la base de datos de Ana aún no cambió. ¿Qué explicación es correcta?',o:['El archivo puede existir sin haberse aplicado a esa base','Git actualiza automáticamente todas las bases','La migración es una copia completa de datos','El archivo no debe versionarse'],a:0,e:'Las migraciones se versionan como código, pero cada base registra por separado cuáles ya fueron aplicadas.'},
+      {q:'Un desarrollador prepara datos iniciales para producción. ¿Qué información nunca debería guardar directamente en una migración?',o:['Contraseñas reales o llaves API sin protección','Roles como Admin y User','Estados de pedido','Categorías públicas'],a:0,e:'Los secretos y contraseñas reales no deben quedar expuestos en código o migraciones; requieren manejo seguro.'},
+      {q:'La empresa quiere reemplazar FullName sin detener versiones antiguas de la aplicación. ¿Cuál estrategia es más segura?',o:['Agregar nuevos campos, migrar datos, adoptar el cambio y retirar lo antiguo después','Renombrar y borrar todo inmediatamente','Eliminar la tabla primero','Guardar la información solo en CSS'],a:0,e:'El patrón expandir-migrar-adoptar-contraer mantiene compatibilidad mientras se despliega el cambio gradualmente.'}
+    ];
+    const form=document.querySelector('#quiz');
+    questions.forEach((item,i)=>{const block=document.createElement('section');block.className='question';block.dataset.index=i;block.innerHTML='<h2><span class="number">'+(i+1)+'.</span> '+item.q+'</h2>'+item.o.map((option,j)=>'<label class="option"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+option+'</span></label>').join('')+'<button class="reveal" type="button" aria-expanded="false">Ver respuesta</button><div class="explanation"><span class="correct-answer">Respuesta correcta: '+item.o[item.a]+'.</span><br>'+item.e+'</div>';form.appendChild(block)});
+    const progress=document.querySelector('#progress');
+    function updateProgress(){const count=questions.filter((_,i)=>form.querySelector('input[name="q'+i+'"]:checked')).length;progress.textContent=count+' de '+questions.length+' respondidas'}
+    form.addEventListener('change',event=>{event.target.closest('.question').classList.remove('missing');updateProgress()});
+    form.addEventListener('click',event=>{const button=event.target.closest('.reveal');if(!button)return;const block=button.closest('.question');const open=block.classList.toggle('revealed');button.textContent=open?'Ocultar respuesta':'Ver respuesta';button.setAttribute('aria-expanded',String(open))});
+    document.querySelector('#grade').addEventListener('click',()=>{let score=0;let firstMissing=null;questions.forEach((item,i)=>{const block=form.querySelector('[data-index="'+i+'"]');const selected=form.querySelector('input[name="q'+i+'"]:checked');block.classList.remove('correct','incorrect','missing');if(!selected){block.classList.add('missing');if(!firstMissing)firstMissing=block;return}const ok=Number(selected.value)===item.a;block.classList.add(ok?'correct':'incorrect');if(ok)score++});if(firstMissing){firstMissing.scrollIntoView({behavior:'smooth',block:'center'});return}const percent=Math.round(score/questions.length*100);const result=document.querySelector('#result');const status=percent>=70?'¡Buen trabajo! Comprendes los temas esenciales de la semana.':'Revisa las respuestas explicadas y vuelve a intentarlo.';result.innerHTML='<div class="score">'+score+'/'+questions.length+' - '+percent+'%</div><p>'+status+'</p>';result.classList.add('show');result.focus();result.scrollIntoView({behavior:'smooth',block:'center'})});
+    document.querySelector('#reset').addEventListener('click',()=>{form.reset();document.querySelectorAll('.question').forEach(element=>element.classList.remove('correct','incorrect','missing','revealed'));document.querySelectorAll('.reveal').forEach(button=>{button.textContent='Ver respuesta';button.setAttribute('aria-expanded','false')});const result=document.querySelector('#result');result.classList.remove('show');result.innerHTML='';updateProgress();scrollTo({top:0,behavior:'smooth'})});
+  </script>
+</body>
+</html>
