@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Semana 10: bases relacionales y NoSQL, clave-valor, endpoints, Node.js y seguridad de APIs.">
+  <meta property="og:title" content="Semana 10 - Bases de datos y endpoints">
+  <meta property="og:description" content="Guía con ejemplos y examen de 25 casos con respuestas explicadas.">
+  <meta property="og:type" content="website">
+  <title>Semana 10 | Bases de datos y endpoints</title>
+  <style>
+    :root{color-scheme:dark;--bg:#07131d;--panel:#10283a;--panel2:#16364c;--text:#f4f9fb;--muted:#b8cad7;--accent:#55d6be;--accent2:#ffbf69;--blue:#7aabff;--ok:#63e6a8;--bad:#ff93a0;--border:#31536b}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(circle at 92% 0,#1f584e 0,transparent 34%),var(--bg);color:var(--text);line-height:1.55}a{color:var(--accent)}header,main{width:min(1050px,calc(100% - 28px));margin:auto}header{padding:38px 0 24px}.back{text-decoration:none;font-weight:750}.kicker{display:block;margin-top:35px;color:var(--accent);font-weight:850;letter-spacing:.1em;text-transform:uppercase}h1{font-size:clamp(2rem,6vw,3.8rem);line-height:1.08;margin:.35rem 0 .8rem}.lead{font-size:1.08rem;color:var(--muted);max-width:840px}.info{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.pill{background:#243a48;border:1px solid var(--border);padding:7px 12px;border-radius:999px;color:#e8f0f3;font-size:.9rem}.notice{background:#173a38;border-left:4px solid var(--accent);padding:16px 18px;border-radius:10px;margin:16px 0 30px;color:#e1faf5}.section-title{margin:36px 0 14px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:25px}.card{background:#102c40;border:1px solid var(--border);border-radius:16px;padding:19px}.card h3{font-size:1.08rem;margin:0 0 8px;color:var(--accent)}.card p{color:var(--muted);margin:0}.badge{display:inline-block;background:#234256;color:#dff8f3;border-radius:999px;padding:4px 9px;font-size:.8rem;font-weight:800;margin-bottom:8px}.table-wrap{overflow-x:auto;border-radius:14px}.comparison{width:100%;min-width:680px;border-collapse:collapse;background:#0e2536;border:1px solid var(--border)}.comparison th,.comparison td{padding:12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}.comparison th{color:var(--accent);background:#18334a}.code-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}.code-card{background:#060e15;border:1px solid #395a72;border-radius:14px;padding:18px;overflow:auto}.code-card h3{color:var(--accent2);margin:0 0 10px}.code-card pre{margin:0;white-space:pre-wrap;color:#d9f5ed;font-size:.86rem}.endpoint-anatomy{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.endpoint-part{background:#172f43;border:1px solid var(--border);border-radius:13px;padding:15px}.endpoint-part strong{color:var(--accent2);display:block;margin-bottom:5px}
+    .question{background:linear-gradient(150deg,var(--panel2),var(--panel));border:1px solid var(--border);border-radius:18px;padding:24px;margin:18px 0}.question h2{font-size:1.08rem;margin:0 0 18px}.number{color:var(--accent2);font-weight:850}.option{display:flex;gap:12px;align-items:flex-start;border:1px solid #3c5d75;border-radius:12px;padding:12px 14px;margin:9px 0;cursor:pointer}.option:hover,.option:focus-within{background:#1c3e56;border-color:var(--blue)}input[type=radio]{margin-top:5px;accent-color:var(--accent);transform:scale(1.15)}.explanation{display:none;margin-top:15px;border-radius:11px;padding:13px 15px}.question.correct{border-color:var(--ok)}.question.incorrect{border-color:var(--bad)}.question.correct .explanation,.question.incorrect .explanation,.question.revealed .explanation{display:block}.question.correct .explanation{background:#103d35;color:#c7fae5}.question.incorrect .explanation{background:#442633;color:#ffdbe0}.question.revealed:not(.correct):not(.incorrect) .explanation{background:#172f47;color:#e0edf8}.correct-answer{font-weight:800}.reveal{margin-top:13px;border:1px solid var(--accent);background:transparent;color:#d4fff7;border-radius:10px;padding:9px 13px;font-weight:800;cursor:pointer}.reveal:hover,.reveal:focus-visible{background:#204153;outline:2px solid var(--accent2);outline-offset:2px}
+    .actions{position:sticky;bottom:0;background:rgba(7,19,29,.95);backdrop-filter:blur(12px);border-top:1px solid var(--border);padding:15px 0;margin-top:28px}.actions-inner{width:min(1050px,calc(100% - 28px));margin:auto;display:flex;gap:12px;align-items:center;justify-content:space-between}.button{border:0;border-radius:12px;padding:13px 20px;font-size:1rem;font-weight:850;cursor:pointer}.primary{background:var(--accent);color:#05231f}.secondary{background:#2c4559;color:var(--text)}.result{display:none;background:#122e45;border:1px solid var(--blue);border-radius:18px;padding:22px;margin:28px 0}.result.show{display:block}.score{font-size:2rem;font-weight:900;color:var(--accent)}.sources{color:var(--muted);padding:28px 0 60px}.sources h2{color:var(--text)}.missing{outline:3px solid var(--accent2);outline-offset:3px}@media(max-width:720px){.actions-inner{align-items:stretch;flex-direction:column}.button{width:100%}.question{padding:19px}.code-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back" href="../">← Volver al inicio</a>
+    <span class="kicker">Semana 10</span>
+    <h1>Bases de datos, endpoints y seguridad de APIs</h1>
+    <p class="lead">Compara familias de bases de datos y aprende a pensar un endpoint desde el contrato antes de escribirlo en un lenguaje específico.</p>
+    <div class="info"><span class="pill">25 preguntas</span><span class="pill">Ejemplos de código</span><span class="pill">Casos explicados</span></div>
+    <div class="notice"><strong>Meta:</strong> elegir una base de datos por la necesidad del problema y reconocer todas las piezas de un endpoint: método, ruta, entrada, validación, salida y código HTTP.</div>
+  </header>
+  <main>
+    <h2 class="section-title">Bases de datos relacionales</h2>
+    <p>Organizan información en tablas relacionadas mediante claves. Son útiles cuando importan las relaciones, las reglas de integridad y las transacciones consistentes.</p>
+    <section class="cards">
+      <article class="card"><span class="badge">Relacional</span><h3>PostgreSQL</h3><p>Adecuada para sistemas con consultas complejas, integridad fuerte y características avanzadas. Ejemplo: pedidos, inventario y reportes.</p></article>
+      <article class="card"><span class="badge">Relacional</span><h3>MySQL</h3><p>Muy utilizada en aplicaciones web, tiendas y sistemas de contenido que necesitan tablas y consultas SQL.</p></article>
+      <article class="card"><span class="badge">Relacional</span><h3>SQL Server</h3><p>Frecuente en empresas y entornos Microsoft para facturación, finanzas, reportes y sistemas administrativos.</p></article>
+    </section>
+
+    <h2 class="section-title">Bases de datos no relacionales o NoSQL</h2>
+    <p>No obligan a representar todo mediante tablas relacionadas. Existen varios modelos: documentos, clave-valor, columnas amplias y grafos.</p>
+    <section class="cards">
+      <article class="card"><span class="badge">Documentos</span><h3>MongoDB</h3><p>Guarda documentos parecidos a JSON. Resulta útil para catálogos con atributos variables, contenido y prototipos que evolucionan rápido.</p></article>
+      <article class="card"><span class="badge">Clave-valor</span><h3>Redis</h3><p>Busca valores muy rápido usando una clave. Es común para caché, sesiones, contadores y carritos temporales.</p></article>
+      <article class="card"><span class="badge">Columnas amplias</span><h3>Cassandra</h3><p>Se usa en grandes volúmenes distribuidos que requieren alta disponibilidad, como eventos, telemetría o actividad masiva.</p></article>
+    </section>
+    <p class="notice"><strong>Clave-valor y llave-valor significan lo mismo.</strong> Una clave única permite recuperar un valor. Ejemplo: <code>cart:user-42 → { products: [5, 8] }</code>. Es parecido a buscar un casillero por su número.</p>
+
+    <h2 class="section-title">Relacional frente a NoSQL</h2>
+    <div class="table-wrap"><table class="comparison">
+      <thead><tr><th>Necesidad</th><th>Opción frecuente</th><th>Razón</th></tr></thead>
+      <tbody>
+        <tr><td>Pagos, facturas y relaciones claras</td><td>Relacional</td><td>Transacciones, restricciones y consultas entre tablas.</td></tr>
+        <tr><td>Catálogo con atributos diferentes por producto</td><td>Documentos</td><td>Estructura flexible por documento.</td></tr>
+        <tr><td>Sesiones o caché con acceso muy rápido</td><td>Clave-valor</td><td>Lectura directa mediante una clave.</td></tr>
+        <tr><td>Grandes eventos distribuidos</td><td>Columnas amplias</td><td>Escalabilidad y alta disponibilidad.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 class="section-title">Sección independiente: todo lo básico de un endpoint</h2>
+    <p>Un endpoint es una operación concreta que una API expone. No es únicamente la URL: también incluye el método HTTP, las entradas esperadas, validaciones y posibles respuestas.</p>
+    <section class="endpoint-anatomy">
+      <article class="endpoint-part"><strong>Método HTTP</strong>GET consulta, POST crea o ejecuta una acción, PUT actualiza y DELETE elimina.</article>
+      <article class="endpoint-part"><strong>Ruta</strong><code>/api/products</code> identifica el recurso o acción disponible.</article>
+      <article class="endpoint-part"><strong>Path parameter</strong><code>/api/products/5</code> identifica un recurso concreto.</article>
+      <article class="endpoint-part"><strong>Query parameter</strong><code>?active=true</code> filtra, ordena o pagina.</article>
+      <article class="endpoint-part"><strong>Headers</strong>Metadatos como Content-Type y Authorization.</article>
+      <article class="endpoint-part"><strong>Body</strong>Datos enviados normalmente en POST, PUT o PATCH.</article>
+      <article class="endpoint-part"><strong>Validaciones</strong>Comprueban tipos, campos obligatorios y reglas del negocio.</article>
+      <article class="endpoint-part"><strong>Respuesta</strong>Código HTTP y cuerpo JSON que explican el resultado.</article>
+    </section>
+
+    <h2 class="section-title">Ejemplo de POST en Node.js</h2>
+    <section class="code-grid">
+      <article class="code-card"><h3>Implementación mínima con Express</h3><pre><code>app.post('/api/accion', (req, res) => {
+  const { edad } = req.body;
+
+  if (typeof edad !== 'number') {
+    return res.status(400).json({
+      error: 'La edad es obligatoria y numérica'
+    });
+  }
+
+  if (edad > 18) {
+    return res.status(200).json({
+      message: 'Acción permitida'
+    });
+  }
+
+  return res.status(403).json({
+    error: 'Debes ser mayor de 18 años'
+  });
+});</code></pre></article>
+      <article class="code-card"><h3>Pseudocontrato independiente del lenguaje</h3><pre><code>MÉTODO: POST
+ENDPOINT: /api/accion
+
+ENTRADA:
+  Body JSON con "edad"
+
+VALIDACIONES:
+  SI edad no existe o no es número
+    RESPONDER 400 Bad Request
+
+CASO CORRECTO:
+  SI edad > 18
+    RESPONDER 200 OK
+    { "message": "Acción permitida" }
+
+CASO NO PERMITIDO:
+  EN CASO CONTRARIO
+    RESPONDER 403 Forbidden</code></pre></article>
+    </section>
+
+    <h2 class="section-title">Seguridad y arquitectura del material de clase</h2>
+    <section class="cards">
+      <article class="card"><h3>API Gateway</h3><p>Recibe el tráfico, enruta solicitudes, valida tokens, limita peticiones y protege servicios internos.</p></article>
+      <article class="card"><h3>CORS, CSRF y CSP</h3><p>CORS controla orígenes del navegador; CSRF evita acciones no autorizadas con una sesión; CSP restringe fuentes de scripts.</p></article>
+      <article class="card"><h3>OAuth2 con PKCE</h3><p>Permite autorización delegada sin compartir la contraseña con la aplicación cliente. PKCE protege el intercambio de código en apps públicas.</p></article>
+    </section>
+
+    <form id="quiz" novalidate></form>
+    <section id="result" class="result" aria-live="polite" tabindex="-1"></section>
+    <section class="sources">
+      <h2>Fuentes estudiadas</h2>
+      <ul>
+        <li>PDF de clase: <em>Web Systems Architecture, API Security & OAuth2 Protocols</em>.</li>
+        <li><a href="https://www.youtube.com/watch?v=HKo0IjYucNg" target="_blank" rel="noopener">Video: motores de bases de datos relacionales</a>.</li>
+        <li><a href="https://www.youtube.com/watch?v=R07q9GJc2oA" target="_blank" rel="noopener">Video: ejemplos de bases de datos NoSQL</a>.</li>
+      </ul>
+    </section>
+  </main>
+  <div class="actions"><div class="actions-inner"><span id="progress">0 de 25 respondidas</span><div><button class="button secondary" type="button" id="reset">Reiniciar</button> <button class="button primary" type="button" id="grade">Calificar examen</button></div></div></div>
+  <script>
+    const questions=[
+      {q:'Una empresa registra facturas, clientes y pagos con relaciones estrictas y transacciones. ¿Qué familia de base de datos encaja mejor?',o:['Relacional','Clave-valor únicamente','Documentos sin reglas','Archivos de texto'],a:0,e:'Una base relacional es apropiada cuando importan relaciones, restricciones y transacciones consistentes.'},
+      {q:'Un sistema financiero en un entorno Microsoft necesita SQL, reportes empresariales e integración corporativa. ¿Cuál es una opción común?',o:['Redis','SQL Server','MongoDB','FTP'],a:1,e:'SQL Server es un motor relacional habitual en ecosistemas Microsoft y sistemas administrativos.'},
+      {q:'Una aplicación necesita consultas SQL avanzadas, integridad fuerte y extensiones potentes. ¿Qué motor relacional puede elegir?',o:['Cassandra','PostgreSQL','Redis','Un endpoint'],a:1,e:'PostgreSQL destaca por sus capacidades SQL avanzadas, integridad y extensibilidad.'},
+      {q:'Una pequeña tienda web busca un motor relacional ampliamente usado con aplicaciones web. ¿Cuál encaja?',o:['MySQL','MongoDB','Redis','SSH'],a:0,e:'MySQL es un motor relacional muy extendido en sitios y aplicaciones web.'},
+      {q:'Un catálogo permite atributos diferentes para teléfonos, zapatos y alimentos. ¿Qué base documental resulta apropiada?',o:['SQL Server obligatoriamente','MongoDB','FTP','Un DTO'],a:1,e:'MongoDB guarda documentos flexibles, útiles cuando los elementos no comparten exactamente los mismos campos.'},
+      {q:'La tienda necesita guardar temporalmente carritos y recuperarlos en milisegundos usando user-42. ¿Qué opción encaja?',o:['Redis con clave-valor','Una tabla impresa','Cassandra solo por columnas','Un archivo CSS'],a:0,e:'Redis es común para caché, sesiones y carritos porque recupera valores directamente por clave.'},
+      {q:'Una plataforma recibe enormes cantidades de eventos distribuidos y prioriza disponibilidad y escalado. ¿Cuál opción puede servir?',o:['Cassandra','Un pipe de Angular','FTP','SQLite en un único teléfono'],a:0,e:'Cassandra está diseñada para cargas distribuidas grandes y alta disponibilidad.'},
+      {q:'En Redis se guarda session:abc → datos del usuario. ¿Qué representa session:abc?',o:['El valor completo','La clave o llave','Una tabla relacional','El código HTTP'],a:1,e:'En el modelo clave-valor, la clave identifica el dato y permite recuperar su valor.'},
+      {q:'Alguien afirma que clave-valor y llave-valor son modelos distintos. ¿Cuál corrección corresponde?',o:['Son dos nombres en español para el mismo modelo','Llave-valor solo existe en XML','Clave-valor es únicamente relacional','Ninguno almacena datos'],a:0,e:'Clave y llave se usan como traducciones de key; ambas expresiones describen el mismo modelo.'},
+      {q:'Un sistema necesita unir clientes, pedidos y pagos mediante consultas y claves foráneas. ¿Qué enfoque conviene?',o:['Relacional','Clave-valor sin relaciones','Solo documentos independientes','Una conexión SSH'],a:0,e:'Las bases relacionales están diseñadas para representar relaciones y consultar datos conectados.'},
+      {q:'La API completa ofrece productos, clientes y pedidos. ¿Qué es GET /api/products/5 dentro de ella?',o:['La API completa','Un endpoint específico','Una base de datos','Un servidor FTP'],a:1,e:'Un endpoint es una operación concreta definida por método y ruta dentro de una API.'},
+      {q:'Dos rutas usan /api/products/5: una consulta y otra elimina. ¿Qué elemento las diferencia?',o:['El método HTTP, GET o DELETE','El color de la pantalla','La base de datos siempre','El puerto SSH'],a:0,e:'Método y ruta juntos identifican la operación; una misma ruta puede responder a métodos diferentes.'},
+      {q:'En GET /api/products/5, ¿qué representa el 5?',o:['Un query parameter','Un path parameter que identifica el producto','Un header','El body JSON'],a:1,e:'El valor forma parte de la ruta e identifica directamente un recurso.'},
+      {q:'La tienda usa GET /api/products?active=true. ¿Para qué sirve active=true?',o:['Para filtrar la colección','Para reemplazar el método GET','Para firmar un JWT','Para iniciar SSH'],a:0,e:'Un query parameter modifica la consulta, por ejemplo filtrando productos activos.'},
+      {q:'Una solicitud POST envía { nombre, precio }. ¿En qué parte viajan normalmente esos datos?',o:['En el body','En el código 200','En el nombre del servidor','En un pipe'],a:0,e:'El body contiene la representación enviada por el cliente, normalmente JSON.'},
+      {q:'El endpoint recibe edad como texto cuando exige un número. ¿Qué debe hacer antes de ejecutar la acción?',o:['Validar la entrada y responder 400','Aceptar cualquier valor siempre','Eliminar la base de datos','Responder 200 sin revisar'],a:0,e:'Una entrada con formato inválido debe rechazarse claramente, normalmente con 400 Bad Request.'},
+      {q:'El contrato indica que edad debe ser mayor que 18 y llega 25. ¿Qué resultado corresponde al ejemplo?',o:['403 Forbidden','200 OK con acción permitida','404 Not Found','500 obligatoriamente'],a:1,e:'La edad cumple la regla del caso correcto, así que el endpoint responde 200 OK.'},
+      {q:'Llega edad 16 a una acción restringida para mayores de 18. ¿Qué respuesta comunica que entendió la solicitud pero no permite la acción?',o:['201 Created','403 Forbidden','200 OK','301 Redirect'],a:1,e:'403 indica que la operación está prohibida para ese caso o permiso.'},
+      {q:'Antes de programar un endpoint en Java, C# o Node.js, ¿qué documento informal ayuda a conservar la misma idea?',o:['Un pseudocontrato con método, ruta, entrada, validaciones y respuestas','Solo una captura del botón','Un color CSS','Un nombre de tabla sin contexto'],a:0,e:'El pseudocontrato describe el comportamiento sin depender de la sintaxis de un lenguaje.'},
+      {q:'Miles de solicitudes llegan a microservicios internos. ¿Qué componente puede autenticar, limitar tráfico y enrutar desde un punto central?',o:['API Gateway','Pipe de moneda','Documento MongoDB','Seeder'],a:0,e:'El gateway actúa como entrada y concentra funciones como routing, autenticación y rate limiting.'},
+      {q:'Una aplicación web de otro dominio intenta llamar la API desde el navegador. ¿Qué mecanismo define los orígenes permitidos?',o:['CORS','FTP','Cassandra','DTO'],a:0,e:'CORS controla qué orígenes pueden realizar solicitudes desde navegadores.'},
+      {q:'Un atacante intenta ejecutar una acción usando automáticamente la cookie de una víctima. ¿Qué riesgo se debe mitigar?',o:['CSRF','Un JOIN SQL','Una clave de Redis','Un pipe'],a:0,e:'CSRF aprovecha credenciales enviadas automáticamente para provocar acciones no autorizadas.'},
+      {q:'Una política restringe desde qué dominios pueden cargarse scripts para reducir XSS. ¿Cuál es?',o:['CSP','CORS exclusivamente','FTP','OAuth2 Resource Owner'],a:0,e:'Content Security Policy limita fuentes permitidas para scripts y otros recursos.'},
+      {q:'La aplicación de pedidos publica OrderCreated y continúa sin esperar al servicio de correo. ¿Qué estilo usa?',o:['Comunicación asíncrona mediante eventos','Llamada REST síncrona obligatoria','Sesión local','Consulta relacional directa'],a:0,e:'En mensajería asíncrona el productor publica un evento y los consumidores lo procesan después.'},
+      {q:'Una app móvil obtiene permiso para acceder a datos sin recibir la contraseña del usuario y protege el código con PKCE. ¿Qué protocolo utiliza?',o:['OAuth2','FTP','CSP','SQL'],a:0,e:'OAuth2 permite autorización delegada; PKCE protege el flujo de código en clientes públicos como móviles y SPA.'}
+    ];
+    const form=document.querySelector('#quiz');
+    questions.forEach((item,i)=>{const block=document.createElement('section');block.className='question';block.dataset.index=i;block.innerHTML='<h2><span class="number">'+(i+1)+'.</span> '+item.q+'</h2>'+item.o.map((option,j)=>'<label class="option"><input type="radio" name="q'+i+'" value="'+j+'"><span>'+option+'</span></label>').join('')+'<button class="reveal" type="button" aria-expanded="false">Ver respuesta</button><div class="explanation"><span class="correct-answer">Respuesta correcta: '+item.o[item.a]+'.</span><br>'+item.e+'</div>';form.appendChild(block)});
+    const progress=document.querySelector('#progress');
+    function updateProgress(){const count=questions.filter((_,i)=>form.querySelector('input[name="q'+i+'"]:checked')).length;progress.textContent=count+' de '+questions.length+' respondidas'}
+    form.addEventListener('change',event=>{event.target.closest('.question').classList.remove('missing');updateProgress()});
+    form.addEventListener('click',event=>{const button=event.target.closest('.reveal');if(!button)return;const block=button.closest('.question');const open=block.classList.toggle('revealed');button.textContent=open?'Ocultar respuesta':'Ver respuesta';button.setAttribute('aria-expanded',String(open))});
+    document.querySelector('#grade').addEventListener('click',()=>{let score=0;let firstMissing=null;questions.forEach((item,i)=>{const block=form.querySelector('[data-index="'+i+'"]');const selected=form.querySelector('input[name="q'+i+'"]:checked');block.classList.remove('correct','incorrect','missing');if(!selected){block.classList.add('missing');if(!firstMissing)firstMissing=block;return}const ok=Number(selected.value)===item.a;block.classList.add(ok?'correct':'incorrect');if(ok)score++});if(firstMissing){firstMissing.scrollIntoView({behavior:'smooth',block:'center'});return}const percent=Math.round(score/questions.length*100);const result=document.querySelector('#result');const status=percent>=70?'¡Buen trabajo! Comprendes los conceptos esenciales de la semana.':'Revisa las respuestas explicadas y vuelve a intentarlo.';result.innerHTML='<div class="score">'+score+'/'+questions.length+' - '+percent+'%</div><p>'+status+'</p>';result.classList.add('show');result.focus();result.scrollIntoView({behavior:'smooth',block:'center'})});
+    document.querySelector('#reset').addEventListener('click',()=>{form.reset();document.querySelectorAll('.question').forEach(element=>element.classList.remove('correct','incorrect','missing','revealed'));document.querySelectorAll('.reveal').forEach(button=>{button.textContent='Ver respuesta';button.setAttribute('aria-expanded','false')});const result=document.querySelector('#result');result.classList.remove('show');result.innerHTML='';updateProgress();scrollTo({top:0,behavior:'smooth'})});
+  </script>
+</body>
+</html>
