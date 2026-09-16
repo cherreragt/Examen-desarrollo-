@@ -11,6 +11,14 @@ Repositorio de estudio organizado por semanas. Cada evaluación combina las lect
 
 Abre `index.html` desde GitHub Pages o descarga el repositorio y abre el archivo en tu navegador. Cada examen permite responder, calcular la nota y revisar una explicación por pregunta.
 
+## Formato obligatorio de los exámenes
+
+- Preguntas redactadas como casos de uso cotidianos y comprensibles, con nivel apropiado para un examen.
+- No se utilizarán enunciados como “según el PDF” o preguntas que dependan de recordar dónde apareció un concepto.
+- Cada pregunta tendrá un botón **Ver respuesta** con la opción correcta y una explicación breve.
+- El estudiante también podrá responder todo el examen y obtener una calificación automática.
+- REST, ORM, ODM y CRUD se tratarán de forma introductoria, salvo que el material de una semana solicite mayor profundidad.
+
 ## Fuentes de la Semana 6
 
 - Material de clase: *Modern Full-Stack Architecture - Angular + ASP.NET Core*.
