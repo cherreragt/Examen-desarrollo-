@@ -6,6 +6,7 @@ Repositorio de estudio organizado por semanas. Cada evaluación combina las lect
 
 - [Semana 6 - Arquitectura full stack y lenguajes del cliente/servidor](semana-06/index.html)
 - [Semana 7 - Laravel, Eloquent ORM y fundamentos de API REST](semana-07/index.html)
+- [Semana 8 - SOAP, REST, HTTP, JSON/XML y migraciones](semana-08/index.html)
 
 ## Cómo usarlo
 
@@ -32,5 +33,11 @@ Abre `index.html` desde GitHub Pages o descarga el repositorio y abre el archivo
 - Styde: rutas con parámetros dinámicos en Laravel 10.
 - Styde: selección con subconsultas de SQL en Eloquent ORM.
 - DEV Community: Eloquent con ejemplos.
+
+## Fuentes de la Semana 8
+
+- Material de clase: *Application + Database Evolution with Entity Framework Core*.
+- JavaGuides: convenciones para nombrar URI de API REST.
+- Tutoriales.edu.lat: comparación entre JSON y XML.
 
 > Las evaluaciones son material de práctica académica y no sustituyen las indicaciones del docente.
