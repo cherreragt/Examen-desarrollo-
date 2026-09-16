@@ -9,6 +9,7 @@ Repositorio de estudio organizado por semanas. Cada evaluación combina las lect
 - [Semana 8 - SOAP, REST, HTTP, JSON/XML y migraciones](semana-08/index.html)
 - [Semana 9 - Monolitos, microservicios, API, capas, JWT y protocolos](semana-09/index.html)
 - [Semana 10 - Bases de datos, endpoints y seguridad de APIs](semana-10/index.html)
+  - [Guía independiente para diseñar endpoints](semana-10/guia-endpoints.html)
 
 ## Cómo usarlo
 
