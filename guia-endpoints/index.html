@@ -117,18 +117,36 @@
 });</code></pre></article>
       <article class="code-card"><h3>Contrato entendible sin depender del lenguaje</h3><pre><code>POST /api/solicitudes/precalificar
 
-RECIBE: nombre, edad, ingresosMensuales y montoSolicitado
+RECIBE:
+nombre, edad, ingresosMensuales y montoSolicitado
 
-VALIDA CON VARIOS IF:
-1. Nombre obligatorio
-2. Edad debe ser un entero
-3. Edad debe ser mayor que 18
-4. Ingresos deben ser mayores que cero
-5. Monto debe ser mayor que cero
+If (nombre == null || nombre == "") {
+  Error 400: "El nombre es obligatorio"
+}
 
-SI TODAS LAS VALIDACIONES PASAN:
-RESPONDE 200 OK
-INDICA que la solicitud puede continuar</code></pre></article>
+If (typeof edad != "integer") {
+  Error 400: "La edad debe ser un entero"
+}
+
+If (edad &lt;= 18) {
+  Error 403: "Debes ser mayor de 18 años"
+}
+
+If (ingresosMensuales &lt;= 0) {
+  Error 400: "Los ingresos deben ser mayores que cero"
+}
+
+If (montoSolicitado &lt;= 0) {
+  Error 400: "El monto debe ser mayor que cero"
+}
+
+// 200 - respuesta válida
+// Si todas las validaciones pasan
+
+Respuesta 200 OK {
+  puedeContinuar: true,
+  mensaje: "La solicitud puede continuar"
+}</code></pre></article>
     </section>
 
     <h2 class="section-title">Solicitud y respuestas de ejemplo</h2>
