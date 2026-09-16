@@ -7,6 +7,7 @@ Repositorio de estudio organizado por semanas. Cada evaluación combina las lect
 - [Semana 6 - Arquitectura full stack y lenguajes del cliente/servidor](semana-06/index.html)
 - [Semana 7 - Laravel, Eloquent ORM y fundamentos de API REST](semana-07/index.html)
 - [Semana 8 - SOAP, REST, HTTP, JSON/XML y migraciones](semana-08/index.html)
+- [Semana 9 - Monolitos, microservicios, API, capas, JWT y protocolos](semana-09/index.html)
 
 ## Cómo usarlo
 
@@ -39,5 +40,10 @@ Abre `index.html` desde GitHub Pages o descarga el repositorio y abre el archivo
 - Material de clase: *Application + Database Evolution with Entity Framework Core*.
 - JavaGuides: convenciones para nombrar URI de API REST.
 - Tutoriales.edu.lat: comparación entre JSON y XML.
+
+## Fuentes de la Semana 9
+
+- Material de clase: *From Monolith to Microservices*.
+- Recurso audiovisual proporcionado para la semana.
 
 > Las evaluaciones son material de práctica académica y no sustituyen las indicaciones del docente.
